@@ -1,5 +1,5 @@
 import json
-n=int(input("Enter Total Number Of students: "))
+n=int(input("Enter Total Number Of students: ",end="\n\n"))
 d={}
 
 
@@ -16,7 +16,7 @@ def fun():
     marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,
              'English': english, 'Computer': computer, "Total": total, "Percentage": str(prcentage)+"%"}
     d[r] = {'Name': name, 'Marks': marks}
-for i in range(n):
+for k in range(n):
     fun()
     print()
     
@@ -40,7 +40,9 @@ while index!=4:
                 Promoted=[]
                 Promoted.append(d[i]['Name'])
         print(json.dumps(Promoted,indent=4),end="\n\n")
+        
     else:
         print("Thank You")
         break 
+
 
