@@ -1,7 +1,7 @@
 import json
 n = eval(input("Enter Total Number Of students: "))
-d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},
-     2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
+# d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
+d = {}
 
 
 def fun():
@@ -14,14 +14,24 @@ def fun():
     computer = int(input("Enter Marks Of Computer: "))
     total = maths+physics+chemistry+english+computer
     prcentage = int((total/500)*100)
-    marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,
-             'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
+    marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
     d[r] = {'Name': name, 'Marks': marks}
 
 
-# for k in range(n):
-#     fun()
-#     print()
+for k in range(n):
+    r = int(input("Enter Roll Number Of Students: "))
+    name = input("Enter Name Of Students: ")
+    maths = int(input("Enter Marks Of Maths: "))
+    physics = int(input("Enter Marks Of Physics: "))
+    chemistry = int(input("Enter Marks Of Chemistry: "))
+    english = int(input("Enter Marks Of English: "))
+    computer = int(input("Enter Marks Of Computer: "))
+    total = maths+physics+chemistry+english+computer
+    prcentage = int((total/500)*100)
+    marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,
+             'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
+    d[r] = {'Name': name, 'Marks': marks}
+    print()
 
 index = 0
 while index != 4:
@@ -31,21 +41,32 @@ while index != 4:
     print("4.delete Student Details")
     print("5. Exit")
     index = int(input("Enter Your Choice: "))
+    print()
     if index == 1:
-        fun()
+        r = int(input("Enter Roll Number Of Students: "))
+        name = input("Enter Name Of Students: ")
+        maths = int(input("Enter Marks Of Maths: "))
+        physics = int(input("Enter Marks Of Physics: "))
+        chemistry = int(input("Enter Marks Of Chemistry: "))
+        english = int(input("Enter Marks Of English: "))
+        computer = int(input("Enter Marks Of Computer: "))
+        total = maths+physics+chemistry+english+computer
+        prcentage = int((total/500)*100)
+        marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
+        d[r] = {'Name': name, 'Marks': marks}
         print()
     elif index == 2:
         c = int(input("Enter Roll Number Of Student: "))
         print(json.dumps(d.get(c), indent=4), end="\n\n")
     elif index == 3:
-        l = d.keys()
-        # Here is a bug that promoted only displys the last student with more than 75% marks
-        for i in l:
-            if d[i]['Marks']['Percentage'] > 75:
-                Promoted = []
-                Promoted = Promoted+[d[i]['Name']]
-        print(Promoted)
-        # print(json.dumps(Promoted, indent=4), end="\n\n")
+        g = {}
+        l = []
+        for i in d:
+            g[d[i]['Name']] = d[i]['Marks']['Percentage']
+        for j in g:
+            if g[j] > 75:
+                l.append(j)
+        print(json.dumps(l, indent=4), end="\n\n")
     elif index == 4:
         c = int(input("Enter Roll Number Of Student: "))
         confirm = input(
