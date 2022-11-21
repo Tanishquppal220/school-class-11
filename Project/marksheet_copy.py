@@ -1,7 +1,7 @@
 import json
 n = eval(input("Enter Total Number Of students: "))
-d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': '96%'}},
-     2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': '94%'}}}
+d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},
+     2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
 
 
 def fun():
@@ -19,10 +19,9 @@ def fun():
     d[r] = {'Name': name, 'Marks': marks}
 
 
-for k in range(n):
-    fun()
-    print()
-
+# for k in range(n):
+#     fun()
+#     print()
 
 index = 0
 while index != 4:
@@ -39,19 +38,24 @@ while index != 4:
         c = int(input("Enter Roll Number Of Student: "))
         print(json.dumps(d.get(c), indent=4), end="\n\n")
     elif index == 3:
-        for i in d:
-            if d[i]['Marks']['Percentage'] > '75%':
+        l = d.keys()
+        # Here is a bug that promoted only displys the last student with more than 75% marks
+        for i in l:
+            if d[i]['Marks']['Percentage'] > 75:
                 Promoted = []
-                Promoted.append(d[i]['Name'])
-        print(json.dumps(Promoted, indent=4), end="\n\n")
+                Promoted = Promoted+[d[i]['Name']]
+        print(Promoted)
+        # print(json.dumps(Promoted, indent=4), end="\n\n")
     elif index == 4:
         c = int(input("Enter Roll Number Of Student: "))
-        confirm= input("Are You Sure You Want To Delete This Student Details (Y/N): ")
+        confirm = input(
+            "Are You Sure You Want To Delete This Student Details (Y/N): ")
         if confirm == 'Y':
             d.pop(c)
             print("Student Details Deleted Successfully")
-        else: 
+        else:
             continue
     else:
         print("Thank You")
         break
+print(d.keys())
