@@ -1,8 +1,8 @@
 import json
 n = eval(input("Enter Total Number Of students: "))
-# d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
-d = {}
-for k in range(n):
+d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
+#d = {}
+'''for k in range(n):
     r = int(input("Enter Roll Number Of Students: "))
     name = input("Enter Name Of Students: ")
     maths = int(input("Enter Marks Of Maths: "))
@@ -16,14 +16,15 @@ for k in range(n):
              'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
     d[r] = {'Name': name, 'Marks': marks}
     print()
-
+'''
 index = 0
-while index != 4:
+while index != 6:
     print("1. Add Student Details")
     print("2. Display Student Details ")
     print("3. Student with More Than 75% Marks")
     print("4. Delete Student Details")
-    print("5. Exit")
+    print("5. Print Whole dict")
+    print("6. Exit")
     index = int(input("Enter Your Choice: "))
     print()
     if index == 1:
@@ -53,14 +54,19 @@ while index != 4:
         print(json.dumps(l, indent=4), end="\n\n")
     elif index == 4:
         c = int(input("Enter Roll Number Of Student: "))
-        confirm = input(
-            "Are You Sure You Want To Delete This Student Details (Y/N): ")
-        if confirm == 'Y':
-            d.pop(c)
-            print("Student Details Deleted Successfully")
+        if c in d:
+            confirm = input("Are You Sure You Want To Delete This Student Details (Y/N): ")
+            if confirm in ['Y','y']:
+                print(json.dumps(d[c], indent=4), end="\n\n")
+                d.pop(c)
+                print("Deleted Successfully")
+            else:
+                continue
         else:
-            continue
+            print(c,"Not in The list")
+    elif index == 5:
+        print(json.dumps(d, indent=4), end="\n\n")
     else:
         print("Thank You")
         break
-print(d.keys())
+
