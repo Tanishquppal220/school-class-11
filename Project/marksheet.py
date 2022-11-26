@@ -1,6 +1,7 @@
 import json
 n = eval(input("Enter Total Number Of students: "))
-d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
+d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},
+     2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
 #d = {}
 '''for k in range(n):
     r = int(input("Enter Roll Number Of Students: "))
@@ -18,6 +19,7 @@ d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 9
     print()
 '''
 index = 0
+
 while index != 6:
     print("1. Add Student Details")
     print("2. Display Student Details ")
@@ -37,12 +39,23 @@ while index != 6:
         computer = int(input("Enter Marks Of Computer: "))
         total = maths+physics+chemistry+english+computer
         prcentage = int((total/500)*100)
-        marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
+        marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,
+                 'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
         d[r] = {'Name': name, 'Marks': marks}
         print()
     elif index == 2:
         c = int(input("Enter Roll Number Of Student: "))
-        print(json.dumps(d.get(c), indent=4), end="\n\n")
+        g = d[c]['Marks']
+        print("Roll Number Of Student:", c)
+        print("Name Of Student:", d[c]['Name'])
+        print("Marks Of Student is:")
+        for i in g:
+            for i in ['Total', 'Percentage']:
+                print("\t", end="")
+                a = i+""+":"+""+str(g[i])
+                print("Marks Of ", i, "are", ":", g[i])
+        print("Total Marks Of Student is:", g['Total'])
+        print("Percentage Of Student is:", g['Percentage'])
     elif index == 3:
         g = {}
         l = []
@@ -51,22 +64,24 @@ while index != 6:
         for j in g:
             if g[j] > 75:
                 l.append(j)
-        print(json.dumps(l, indent=4), end="\n\n")
+        for i in l:
+            a = i
+            print(a)
     elif index == 4:
         c = int(input("Enter Roll Number Of Student: "))
         if c in d:
-            confirm = input("Are You Sure You Want To Delete This Student Details (Y/N): ")
-            if confirm in ['Y','y']:
+            confirm = input(
+                "Are You Sure You Want To Delete This Student Details (Y/N): ")
+            if confirm in ['Y', 'y']:
                 print(json.dumps(d[c], indent=4), end="\n\n")
                 d.pop(c)
                 print("Deleted Successfully")
             else:
                 continue
         else:
-            print(c,"Not in The list")
+            print(c, "Not in The list")
     elif index == 5:
         print(json.dumps(d, indent=4), end="\n\n")
     else:
         print("Thank You")
         break
-
