@@ -1,1 +1,0 @@
-{1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': '96%'}}, 2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': '94%'}}}

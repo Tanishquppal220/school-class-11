@@ -1,9 +1,7 @@
 import json
 n = eval(input("Enter Total Number Of students: "))
-d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 95, 'English': 93, 'Computer': 100, 'Total': 483, 'Percentage': 96}},
-     2: {'Name': 'Hardik', 'Marks': {'Maths': 92, 'Physics': 93, 'Chemistry': 95, 'English': 94, 'Computer': 100, 'Total': 474, 'Percentage': 94}}}
-#d = {}
-'''for k in range(n):
+d = {}
+for k in range(n):
     r = int(input("Enter Roll Number Of Students: "))
     name = input("Enter Name Of Students: ")
     maths = int(input("Enter Marks Of Maths: "))
@@ -17,7 +15,7 @@ d = {1: {'Name': 'Tanishq', 'Marks': {'Maths': 98, 'Physics': 97, 'Chemistry': 9
              'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
     d[r] = {'Name': name, 'Marks': marks}
     print()
-'''
+
 index = 0
 
 while index != 6:
