@@ -119,7 +119,7 @@ def data(x):
         total = maths+physics+chemistry+english+computer
         prcentage = int((total/500)*100)
         marks = {'Maths': maths, 'Physics': physics, 'Chemistry': chemistry,
-                 'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
+                'English': english, 'Computer': computer, "Total": total, "Percentage": prcentage}
         d[r] = {'Name': name, 'Marks': marks}
         print()
         x -= 1
@@ -182,12 +182,3 @@ while index != 6:
     else:
         print("Thank You")
         break
-'''
-
-
-# assuming d is the dictionary containing student details
-
-```
-
-This code creates a bar chart that compares the marks of different students in the subject 'Maths'. You can change the value of the `subject` variable to plot the marks for a different subject. I hope this helps!
-'''
